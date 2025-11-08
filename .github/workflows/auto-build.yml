@@ -22,6 +22,13 @@ jobs:
         run: |
           choco install openssl --no-progress -y
 
+          
+      - name: Copy OpenSSL DLLs
+        run: |
+          copy "C:/Program Files/OpenSSL-Win64/bin/libcrypto-3-x64.dll" ./bin
+          copy "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll" ./bin
+
+
       - name: Install Python requirements
         run: |
           python -m pip install --upgrade pip
