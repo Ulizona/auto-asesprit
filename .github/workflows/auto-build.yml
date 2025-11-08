@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+    
+      - name: Install OpenSSL
+        run: |
+          choco install openssl --no-progress -y
 
       - name: Install Python requirements
         run: |
