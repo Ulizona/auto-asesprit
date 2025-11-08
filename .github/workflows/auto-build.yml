@@ -29,6 +29,12 @@ jobs:
           $opensslPath = (Get-ChildItem "C:/Program Files" -Directory | Where-Object { $_.Name -like "OpenSSL*" } | Select-Object -First 1).FullName
           copy "$opensslPath/bin/libcrypto-3-x64.dll" ./bin
           copy "$opensslPath/bin/libssl-3-x64.dll" ./bin
+          
+      - name: Prevent copy error
+        run: |
+          mkdir C:/Windows/System32 -ErrorAction SilentlyContinue
+          echo " " > "C:/Windows/System32/libcrypto-3-x64.dll"
+
 
     
       - name: Install Python requirements
